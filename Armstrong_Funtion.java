@@ -1,48 +1,110 @@
-import java.io.*;
-class Armstrong_Funtion
-{
-    public int Number(int n)
-    {
-        int r,a=0,ano=n,flag=0;
-        while(n>0)
-        {
-            r = n%10;
-            a = a + (r*r*r);
-            n = (n-r)/10;
-        }
-        if(ano==a)
-        {
-            flag = 1;
-        }
-        else
-        {
-            flag = 0;
-        }
-        return(flag);
-    }
-    public static void main(String args[]) throws IOException
-    {
-        System.out.println("Armstrong Number");
-        System.out.println("****************");
-        System.out.println("");
-        InputStreamReader isr=new InputStreamReader(System.in);
-        BufferedReader br=new BufferedReader(isr);
-        int d,p;
-        System.out.print("Enter Number : ");
-        d = Integer.parseInt(br.readLine());
-        System.out.println("");
-        Armstrong_Funtion ob = new Armstrong_Funtion();
-        p = ob.Number(d);
-        if(p==1)
-        {
-            System.out.println("Number is Armstrong");
-        }
-        else
-        {
-            System.out.println("Number is Not Armstrong");
-        }
-    }
-}    
-        
-    
-        
+// In this section, we will discuss what is Armstrong number and also create Java programs to check if the given number is an Armstrong number or not. 
+// The Armstrong number program frequently asked in Java coding interviews and academics.
+// 
+// An Armstrong number is a positive m-digit number that is equal to the sum of the mth powers of their digits. 
+// It is also known as pluperfect, or Plus Perfect, or Narcissistic number. It is an OEIS sequence A005188. Let’s understand it through an example.
+
+import java.util.Scanner;  
+import java.lang.Math;  
+public class ArmstsrongNumberExample  
+{  
+//function to check if the number is Armstrong or not  
+static boolean isArmstrong(int n)   
+{   
+int temp, digits=0, last=0, sum=0;   
+//assigning n into a temp variable  
+temp=n;   
+//loop execute until the condition becomes false  
+while(temp>0)    
+{   
+temp = temp/10;   
+digits++;   
+}   
+temp = n;   
+while(temp>0)   
+{   
+//determines the last digit from the number      
+last = temp % 10;   
+//calculates the power of a number up to digit times and add the resultant to the sum variable  
+sum +=  (Math.pow(last, digits));   
+//removes the last digit   
+temp = temp/10;   
+}  
+//compares the sum with n  
+if(n==sum)   
+//returns if sum and n are equal  
+return true;      
+//returns false if sum and n are not equal  
+else return false;   
+}   
+//driver code  
+public static void main(String args[])     
+{     
+int num;   
+Scanner sc= new Scanner(System.in);  
+System.out.print("Enter the limit: ");  
+//reads the limit from the user  
+num=sc.nextInt();  
+System.out.println("Armstrong Number up to "+ num + " are: ");  
+for(int i=0; i<=num; i++)  
+//function calling  
+if(isArmstrong(i))  
+//prints the armstrong numbers  
+System.out.print(i+ ", ");  
+}   
+}  
+
+// --------------------------------- OR ----------------------------------------
+
+import java.util.Scanner;  
+import java.lang.Math;  
+public class ArmstsrongNumberExample2  
+{  
+//function to check if the number is Armstrong or not  
+static boolean isArmstrong(int n)   
+{   
+int temp, digits=0, last=0, sum=0;   
+//assigning n into a temp variable  
+temp=n;   
+//loop execute until the condition becomes false  
+while(temp>0)    
+{   
+temp = temp/10;   
+digits++;   
+}   
+temp = n;   
+while(temp>0)   
+{   
+//determines the last digit from the number      
+last = temp % 10;   
+//calculates the power of a number up to digit times and add the resultant to the sum variable  
+sum +=  (Math.pow(last, digits));   
+//removes the last digit   
+temp = temp/10;   
+}  
+//compares the sum with n  
+if(n==sum)   
+//returns if sum and n are equal  
+return true;      
+//returns false if sum and n are not equal  
+else return false;   
+}   
+//driver code  
+public static void  main(String args[])     
+{     
+int num;   
+Scanner sc= new Scanner(System.in);  
+System.out.print("Enter the number: ");  
+//reads the limit from the user  
+num=sc.nextInt();  
+if(isArmstrong(num))  
+{  
+System.out.print("Armstrong ");  
+}  
+else   
+{  
+System.out.print("Not Armstrong ");  
+}  
+}   
+}  
+
